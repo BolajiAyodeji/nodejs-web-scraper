@@ -19,6 +19,6 @@ const cheerio = require('cheerio');
           console.log(data);
         }
         
-        getData(response.data)
+        getData(html)
       })
       .catch(console.error);
