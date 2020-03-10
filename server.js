@@ -1,28 +1,24 @@
-const cheerio = require("cheerio");
-const puppeteer = require("puppeteer");
+const axios = require('axios');
+const cheerio = require('cheerio');
 
-const url = "https://www.reddit.com/r/news/";
+    const url = 'https://news.ycombinator.com';
 
-puppeteer
-  .launch({
-    headless: true,
-    args: ["--no-sandbox"]
-  })
-  .then(browser => browser.newPage())
-  .then(page => {
-    return page.goto(url).then(function() {
-      return page.content();
-    });
-  })
-  .then(html => {
-    const $ = cheerio.load(html);
-    const newsHeadlines = [];
-    $('a[href*="/r/news/comments"] > h2').each(function() {
-      newsHeadlines.push({
-        title: $(this).text()
-      });
-    });
+    axios(url)
+      .then(response => {
+        const html = response.data;
 
-    console.log(newsHeadlines);
-  })
-  .catch(console.error);
+        let getData = html => {
+          data = [];
+          const $ = cheerio.load(html);
+          $('table.itemlist tr td:nth-child(3)').each((i, elem) => {
+            data.push({
+              title : $(elem).text(),
+              link : $(elem).find('a.storylink').attr('href')
+            });
+          });
+          console.log(data);
+        }
+        
+        getData(response.data)
+      })
+      .catch(console.error);
