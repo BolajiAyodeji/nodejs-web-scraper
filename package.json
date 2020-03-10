@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-web-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BolajiAyodeji/nodejs-web-scraper.git"
+  },
+  "author": "Bolaji Ayodeji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BolajiAyodeji/nodejs-web-scraper/issues"
+  },
+  "homepage": "https://github.com/BolajiAyodeji/nodejs-web-scraper#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "core-util-is": "^1.0.2",
+    "puppeteer": "^2.1.1"
+  }
+}
